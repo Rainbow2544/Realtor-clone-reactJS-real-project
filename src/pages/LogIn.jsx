@@ -2,9 +2,7 @@ import { useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import OAuth from "../components/OAuth";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {db} from "../firebase"
-import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 
 export default function LogIn() {
@@ -30,6 +28,16 @@ export default function LogIn() {
   async function onSubmit(event){
     //prevent when click the login button will flash the webpage
     event.preventDefault();
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(auth,email,password);
+      if(userCredential.user){
+        toast.success("Welcome back!")
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Bad user credentials")
+    }
 
 
   }

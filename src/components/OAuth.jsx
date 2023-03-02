@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
 import {FaFacebook} from "react-icons/fa";
-import {BsApple} from "react-icons/bs";
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import { db } from "../firebase";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
@@ -17,11 +16,10 @@ export default function OAuth() {
           const result = await signInWithPopup(auth, provider);
           const user = result.user;
     
-          // check for the user
-    
+          // check for the user 
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
-    
+            //and add user to DB
           if (!docSnap.exists()) {
             await setDoc(docRef, {
               name: user.displayName,
@@ -44,7 +42,6 @@ export default function OAuth() {
           const user = result.user;
     
           // check for the user
-    
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
     
@@ -61,8 +58,6 @@ export default function OAuth() {
           toast.error("Could not authorize with Facebook");
         }
       }
-        
-    
   return (
     <>
         <button 
