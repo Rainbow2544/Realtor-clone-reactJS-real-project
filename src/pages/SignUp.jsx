@@ -3,6 +3,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import OAuth from "../components/OAuth";
 
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {db} from "../firebase"
+import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
+
 export default function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,7 +28,27 @@ export default function SignUp() {
   }
 
   async function onSubmit(event){
+    event.preventDefault();
+    
+    try {
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      updateProfile(auth.currentUser,{displayName: name});
+      const user = userCredential.user;
+      const formDataCopy = {...formData};
+      delete formDataCopy.password;//is dangerous to store password in DB and hash directly
+      formDataCopy.timestamp = serverTimestamp();
 
+      // Add a new document in collection "users"
+      await setDoc(doc(db,"users", user.uid),formDataCopy);
+
+      toast.success("Sign up is successful!");
+      navigate("/");
+    } catch (error) {
+      
+      toast.error("Something went wrong with the registration");
+    }
+      
   }
   return (
     

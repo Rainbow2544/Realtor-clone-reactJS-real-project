@@ -2,6 +2,10 @@ import { useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import OAuth from "../components/OAuth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {db} from "../firebase"
+import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -11,6 +15,8 @@ export default function LogIn() {
   });
   const { email, password } = formData;
   const [showPassword, setShowPassword] = useState(false);
+
+  
   
 
   function onChangeHandler(event){
@@ -22,7 +28,10 @@ export default function LogIn() {
   }
 
   async function onSubmit(event){
+    //prevent when click the login button will flash the webpage
     event.preventDefault();
+
+
   }
   return (
     <section>
