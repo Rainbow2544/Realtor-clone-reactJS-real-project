@@ -1,18 +1,41 @@
-import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [pageState, setPageState] = useState("Sign in");
+  const [pageState, setPageState] = useState(false);
 
-  
-
+  const auth = getAuth();
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if(user){
+        setPageState(true);
+        console.log("true from user");
+        
+        
+      }else{
+        setPageState(false);
+        console.log("v");
+        
+      }
+    }
+    );
+  }, [auth]);
+  console.log("userStage"+pageState);
+  //setPageState("profile");
   function pathMatchRoute(route) {
     if (route === location.pathname) {
+      
       return true;
     }
+  }
+
+  function Logout() {
+    auth.signOut();
+    navigate("/");
   }
 
   
@@ -41,7 +64,30 @@ export default function Header() {
                   >
                     Offers
                   </li>
+                  
+                  
+                  {pageState && <li
+                    className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500  ${
+                      (pathMatchRoute("/log-in") || pathMatchRoute("/profile")) &&
+                      "text-gray-400 border-b-[3px] border-b-red-500"
+                    }`}
+                    onClick={() => navigate("/profile")}
+                  >
+                    Profile
+                  </li>}
+                  {pageState &&
                   <li
+                  className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500 
+                    
+                  `}
+                  onClick={Logout}
+                  >
+                    Log out
+                  </li>
+                  }
+
+
+                  {!pageState && <li
                     className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500  ${
                       (pathMatchRoute("/log-in") || pathMatchRoute("/profile")) &&
                       "text-gray-400 border-b-[3px] border-b-red-500"
@@ -49,16 +95,17 @@ export default function Header() {
                     onClick={() => navigate("/log-in")}
                   >
                     Log in
-                  </li>
-                  <li
-                    className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500  ${
-                      (pathMatchRoute("/sign-up") || pathMatchRoute("/profile")) &&
-                      "text-gray-400 border-b-[3px] border-b-red-500"
-                    }`}
-                    onClick={() => navigate("/sign-up")}
-                  >
-                    Sign up
-                  </li>
+                  </li>}
+                  
+                  {!pageState && <li
+                  className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500  ${
+                    (pathMatchRoute("/sign-up") || pathMatchRoute("/profile")) &&
+                    "text-gray-400 border-b-[3px] border-b-red-500"
+                  }`}
+                  onClick={() => navigate("/sign-up")}
+                >
+                  Sign up
+                </li>}
                 </ul>
             </div>
         </header>
