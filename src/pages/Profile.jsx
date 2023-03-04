@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
@@ -14,6 +14,7 @@ import {
   where,
 } from "firebase/firestore";
 import {FaHome} from "react-icons/fa";
+import ListingItem from "../components/ListingItem";
 
 export default function Profile() {
   const auth = getAuth();
@@ -24,7 +25,8 @@ export default function Profile() {
   });
   const { name, email } = formData;
   const [changeDetail, setChangeDetail] = useState(false);
-  
+  const [listings, setListings] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   function onChangeHandler(event) {
     setFormData((prevState) => ({
@@ -52,9 +54,26 @@ export default function Profile() {
     }
   }
 
+  useEffect(()=>{
+    async function fetchUserListings(){
+      const listingRef = collection(db, "listings");
+      const q = query(listingRef, where("userRef","==",auth.currentUser.uid),
+      orderBy("timestamp","desc"));
+      const querySnap = await getDocs(q);
+      let listings = [];
+      querySnap.forEach((docSnap) => {
+        return listings.push({
+          id: docSnap.id,
+          data: docSnap.data(),
+        })
+      });
+      setListings(listings);
+      setLoading(false);
+    }
+    fetchUserListings();
+  }, [auth.currentUser.uid]);
   return (
     <>
-    
       <section className="max-w-6xl  bg-teal-100  mx-auto flex justify-center items-center flex-col">
         <div className=" w-[50%]  mt-6 px-3">
           <h1 className="text-3xl  mt-6 font-bold">{name}</h1>
@@ -100,8 +119,26 @@ export default function Profile() {
       </section>
 
       <div className=" max-w-6xl mx-auto mt-6 px-3 ">
-            <h1 className="text-2xl text-center mt-6 font-bold">My listings</h1>
+        
+      {!loading && listings.length > 0 && (
+          <>
+            <h2 className="text-2xl text-center font-semibold mb-6">
+              My Listings
+            </h2>
+            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+              {listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  id={listing.id}
+                  listing={listing.data}
+                  
+                />
+              ))}
+          </ul>
+        </>
+        )}
+            
       </div>
     </>
-  )
+  );
 }
