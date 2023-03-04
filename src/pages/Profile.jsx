@@ -13,6 +13,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
+import {FaHome} from "react-icons/fa";
 
 export default function Profile() {
   const auth = getAuth();
@@ -54,10 +55,10 @@ export default function Profile() {
   return (
     <>
     
-      <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
+      <section className="max-w-6xl  bg-teal-100  mx-auto flex justify-center items-center flex-col">
         <div className=" w-[50%]  mt-6 px-3">
-          <h1 className="text-2xl  mt-6 font-bold">Name:  {name}</h1>
-          <h1 className="text-2xl  mt-6 font-bold">Email:  {email}</h1>
+          <h1 className="text-3xl  mt-6 font-bold">{name}</h1>
+          <h2 className="text-md  mt-6 font-bold">Email:  {email}</h2>
           <form>
             <input 
                 type="text"
@@ -82,11 +83,25 @@ export default function Profile() {
               {changeDetail ? "Apply change" : "Edit here"}
             </span>
           </form>
-
           
+          <Link
+              to="/create-listing"
+              className="flex justify-center items-center"
+            >
+            <button 
+              type="submit"
+              className="w-full flex justify-center items-center rounded my-4 py-2 px-7 text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800  duration-300 ease-in-out">
+              <FaHome className="mr-2 p-1  text-3xl"/>
+                Sell or rent your home
+            </button>
+          </Link>
           
         </div>
       </section>
+
+      <div className=" max-w-6xl mx-auto mt-6 px-3 ">
+            <h1 className="text-2xl text-center mt-6 font-bold">My listings</h1>
+      </div>
     </>
   )
 }
