@@ -72,9 +72,25 @@ export default function Profile() {
     }
     fetchUserListings();
   }, [auth.currentUser.uid]);
+
+  async function onDelete(listingID){
+    if(window.confirm("Are you sure you want to delete?")){
+      await deleteDoc(doc(db,"listings",listingID));
+      
+      const updateListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updateListings);
+      toast.success("Successfully deleted the listing");
+    }
+  }
+
+  function onEdit(listingID){
+    navigate(`/edit-listing/${listingID}`);
+  }
   return (
     <>
-      <section className="max-w-6xl  bg-teal-100  mx-auto flex justify-center items-center flex-col">
+      <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
         <div className=" w-[50%]  mt-6 px-3">
           <h1 className="text-3xl  mt-6 font-bold">{name}</h1>
           <h2 className="text-md  mt-6 font-bold">Email:  {email}</h2>
@@ -131,7 +147,8 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
-                  
+                  onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
           </ul>
