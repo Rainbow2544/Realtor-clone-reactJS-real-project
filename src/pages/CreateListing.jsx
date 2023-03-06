@@ -384,7 +384,7 @@ return (
                 />
                 {type === "rent" && (
                     <div className="">
-                    <p className="text-xl mt-2 w-full whitespace-nowrap">$ / Month</p>
+                    <p className="text-xl mt-2 w-full whitespace-nowrap">$ / Week</p>
                     </div>
                 )}
             </div>
@@ -406,7 +406,7 @@ return (
                         />
                         {type === "rent" && (
                             <div className="">
-                            <p className="text-xl mt-2 w-full whitespace-nowrap">$ / Month</p>
+                            <p className="text-xl mt-2 w-full whitespace-nowrap">$ / Week</p>
                             </div>
                         )}
                     </div>

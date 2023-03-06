@@ -33,7 +33,7 @@ export default function listingItem({listing, id, onEdit, onDelete}) {
                 <p className="text-[#457b9d] mt-2 font-semibold">${listing.offer ? 
                 listing.discountedPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 : listing.regularPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                {listing.type === "rent" && " / month"}
+                {listing.type === "rent" && " / week"}
                 </p>
 
                 <div className="flex items-center mt-[10px] space-x-3">
