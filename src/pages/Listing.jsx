@@ -21,6 +21,7 @@ import {
 import {MdLocationOn}from "react-icons/md";
 import { getAuth } from "firebase/auth";
 import Contact from "../components/Contact";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 export default function Listing() {
     const params  = useParams();
@@ -68,7 +69,7 @@ export default function Listing() {
             ))}
         </Swiper>
         <div
-            className="fixed bottom-[25%] right-[3%] z-10 bg-white cursor-pointer border-2 border-gray-400 rounded-full w-12 h-12 flex justify-center items-center"
+            className=" absolute bottom-[25%] right-[3%] z-10 bg-white cursor-pointer border-2 border-gray-400 rounded-full w-12 h-12 flex justify-center items-center"
             onClick={() => {
             navigator.clipboard.writeText(window.location.href);
             setShareLinkCopied(true);
@@ -80,7 +81,7 @@ export default function Listing() {
             <FaShare className="text-lg text-slate-500" />
       </div>
       {shareLinkCopied &&  (
-        <p className="fixed bottom-[21%] right-[5%] font-semibold border-2 border-gray-400 rounded-md bg-white z-10 p-2">
+        <p className="absolute bottom-[21%] right-[5%] font-semibold border-2 border-gray-400 rounded-md bg-white z-10 p-2">
           Link Copied
         </p>
       )}
@@ -148,8 +149,25 @@ export default function Listing() {
           )}
             
         </div>
-        <div className="bg-pink-300 overflow-x-hidden w-full h-[200px] md:h-[400px] md:mt-0 md:ml-2">why
-        
+        <div className="mt-5 overflow-x-hidden w-full h-[200px] md:h-[400px] md:mt-0 md:ml-2">
+            <MapContainer
+                center={[listing.geolocation.lat, listing.geolocation.lng]}
+                zoom={13}
+                scrollWheelZoom={false}
+                style={{ height: "100%", width: "100%" }}
+            >
+                <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker
+                position={[listing.geolocation.lat, listing.geolocation.lng]}
+                >
+                <Popup>
+                    {listing.address}
+                </Popup>
+                </Marker>
+            </MapContainer>
         </div>
       </div>
     </main>

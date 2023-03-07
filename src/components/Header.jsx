@@ -46,8 +46,8 @@ export default function Header() {
                 <img src='https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg' alt="logo" 
                 className='h-5 cursor-pointer'onClick ={() => navigate("/")}/>
             </div>
-            <div>
-                <ul className='flex space-x-10'>
+            <div className='ml-5'> 
+                <ul className='flex space-x-8'>
                   <li
                     className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500 ${
                       pathMatchRoute("/") && "text-gray-400 border-b-[3px] border-b-red-500"
