@@ -18,13 +18,17 @@ import {
     FaParking,
     FaChair,
   } from "react-icons/fa";
-  import {MdLocationOn}from "react-icons/md";
+import {MdLocationOn}from "react-icons/md";
+import { getAuth } from "firebase/auth";
+import Contact from "../components/Contact";
 
 export default function Listing() {
     const params  = useParams();
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(true);
     const [shareLinkCopied, setShareLinkCopied] = useState(false);
+    const [contactLandlord,setContactLandlord] = useState(false);
+    const auth = getAuth();
     SwiperCore.use([Autoplay, Navigation, Pagination]);
     useEffect(()=>{
         async function fetchListing(){
@@ -113,27 +117,35 @@ export default function Listing() {
             {listing.description}
           </p>
 
-          <div className='flex sm:space-x-12 space-x-2 font-semibold'>
-            <div>
+          <div className='flex items-center sm:space-x-12 space-x-2 font-semibold'>
+            <div className="whitespace-nowrap">
             <FaBed className="absolute mt-[2px] text-md"/>
             <p className='ml-5 text-sm'>{listing.bedrooms > 1 ? `${listing.bedrooms} Beds`:"1 Bed"}</p>
             </div>
-            <div>
+            <div className="whitespace-nowrap">
             <FaBath className="absolute  text-md"/>
             <p className='ml-5 text-sm'>{listing.bathrooms > 1 ? `${listing.bathrooms} Baths`:"1 Bath"}</p>
             </div>
-            <div>
+            <div className="whitespace-nowrap">
             <FaParking className="absolute mt-[1px] text-lg"/>
             <p className='ml-5 text-sm'>{listing.parking ? "Parking spot" : "No parking"}</p>
             </div>
-            <div>
+            <div className="whitespace-nowrap">
             <FaChair className="absolute mt-[1px] text-md"/>
             <p className='ml-5 text-sm'>{listing.furnished ? "Furnished" : "No furnished"}</p>
             </div>
           </div>
-          <button className='my-3 p-3 text-white font-semibold bg-blue-600 w-full rounded-md shadow-md hover:shadow-lg hover:bg-blue-700 active:bg-blue-800 active:shadow-xl transition duration-200 ease-in-out'>
+          {listing.userRef !== auth.currentUser?.uid && !contactLandlord &&(
+            <button
+                onClick={()=> setContactLandlord(true)} 
+                className='my-3 p-3 text-white font-semibold bg-blue-600 w-full rounded-md shadow-md hover:shadow-lg hover:bg-blue-700 active:bg-blue-800 active:shadow-xl transition duration-200 ease-in-out'
+                >
                 Contact Landlord
             </button>
+          )}
+          {contactLandlord && (
+            <Contact userRef={listing.userRef} listing={listing} />
+          )}
             
         </div>
         <div className="bg-pink-300 overflow-x-hidden w-full h-[200px] md:h-[400px] md:mt-0 md:ml-2">why
