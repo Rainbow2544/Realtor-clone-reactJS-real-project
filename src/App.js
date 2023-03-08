@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Sale from "./pages/Sale";
+import Sell from "./pages/Sell";
 import Rent from "./pages/Rent";
 import Profile from "./pages/Profile";
 import LogIn from "./pages/LogIn";
@@ -13,7 +13,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
-import Category from "./pages/Category";
+import Category from "./pages/Offers";
 
 function App() {
   return (
@@ -22,8 +22,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sale" element={<Sale />} />
+          <Route path="/sell" element={<Sell />} />
           <Route path="/rent" element={<Rent />} />
+          <Route path="/offers" element={<Offers />} />
           <Route path="/profile" element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile />} />
           </Route>
@@ -36,8 +37,8 @@ function App() {
           <Route path="/Log-in" element={<LogIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/category/:categoryName/:listingId" element={<Listing />}/>
-          <Route path="/category/:categoryName" element={<Category />} />
+          <Route path="/:categoryName/:listingId" element={<Listing />}/>
+          
         </Routes>
       </Router>
       <ToastContainer

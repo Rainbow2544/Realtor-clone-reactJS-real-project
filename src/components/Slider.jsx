@@ -53,8 +53,8 @@ export default function Slider() {
             autoplay={{ delay: 2000 }}
         >
             {listings.map(({data ,id}) => (
-                <SwiperSlide key={id} onClick={() => navigate(`/category/${data.type}/${id}`)}>
-                    <div className='relative w-full overflow-hidden h-[500px]' 
+                <SwiperSlide key={id} onClick={() => navigate(`/${data.type}/${id}`)}>
+                    <div className='relative w-full overflow-hidden h-[400px]' 
                         style={{
                             background: `url(${data.imgUrls[0]}) center no-repeat`,
                             backgroundSize: "cover",
@@ -63,7 +63,10 @@ export default function Slider() {
                         <p className='absolute max-w-[90%] rounded-br-3xl p-2 font-medium bg-[#54a5d7] opacity-90 text-white left-1 top-3'>
                             {data.name}</p>
                         <p className='absolute max-w-[90%] rounded-tr-3xl p-2 font-medium bg-[#d1af66] opacity-90 text-white left-1 bottom-3'>
-                            ${data.discountPrice? data.discountPrice:data.regularPrice}
+                            ${data.discountPrice? 
+                            data.discountPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            :
+                            data.regularPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                             {data.type ==="rent"&& "/week"}
                         </p>
                     </div>

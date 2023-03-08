@@ -144,7 +144,7 @@ export default function Home() {
               <h2 className="text-2xl ml-3 font-semibold mb-2">
                 Houses for Sale
               </h2>
-              <Link to="/sale">
+              <Link to="/sell">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Show more places for sale
               </p>

@@ -58,9 +58,9 @@ export default function Header() {
                   </li>
                   <li
                     className={`cursor-pointer py-3 text-sm font-semibold text-black hover:border-b-[3px] hover:border-b-red-500  ${
-                      pathMatchRoute("/sale") && "text-gray-400 border-b-[3px] border-b-red-500"
+                      pathMatchRoute("/sell") && "text-gray-400 border-b-[3px] border-b-red-500"
                     }`}
-                    onClick={() => navigate("/sale")}
+                    onClick={() => navigate("/sell")}
                   >
                     Buy
                   </li>

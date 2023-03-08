@@ -203,7 +203,7 @@ export default function EditListing() {
         await updateDoc(docRef, formDataCopy);
         setLoading(false);
         toast.success("Listing edited successful.");
-        navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+        navigate(`/${formDataCopy.type}/${docRef.id}`);
     }
 
     if (loading) {
