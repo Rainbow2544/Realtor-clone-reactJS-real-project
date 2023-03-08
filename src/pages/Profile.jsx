@@ -91,7 +91,7 @@ export default function Profile() {
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <div className=" w-[50%]  mt-6 px-3">
+        <div className=" w-[70%]  mt-6 px-5 shadow-lg">
           <h1 className="text-3xl  mt-6 font-bold">{name}</h1>
           <h2 className="text-md  mt-6 font-bold">Email:  {email}</h2>
           <form>
@@ -125,7 +125,7 @@ export default function Profile() {
             >
             <button 
               type="submit"
-              className="w-full flex justify-center items-center rounded my-4 py-2 px-7 text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800  duration-300 ease-in-out">
+              className="w-[80%] flex justify-center items-center rounded my-4 py-2 px-7 text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800  duration-300 ease-in-out">
               <FaHome className="mr-2 p-1  text-3xl"/>
                 Sell or rent your home
             </button>
