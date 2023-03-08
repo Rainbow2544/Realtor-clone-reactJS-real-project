@@ -98,7 +98,7 @@ export default function Home() {
     <div>
       <Slider/>
 
-      <div className=" max-w-6xl mx-auto mt-6 px-3 ">
+      <div className=" max-w-6xl mx-auto pt-4 space-y-6 ">
         
       { offerListings && offerListings.length > 0 && (
           <div className='mt-10'>
@@ -110,7 +110,7 @@ export default function Home() {
                 Show more places for sale
               </p>
               </Link>
-            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {offerListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -132,7 +132,7 @@ export default function Home() {
                 Show more places for rent
               </p>
             </Link>
-            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {rentListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -154,7 +154,7 @@ export default function Home() {
                 Show more places for sale
               </p>
             </Link>
-              <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+              <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {saleListings.map((listing) => (
                   <ListingItem
                     key={listing.id}

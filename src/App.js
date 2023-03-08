@@ -14,6 +14,7 @@ import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
 import Offers from "./pages/Offers";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/:categoryName/:listingId" element={<Listing />}/>
           
         </Routes>
+        <Footer/>
       </Router>
       <ToastContainer
         position="bottom-center"

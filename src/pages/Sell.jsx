@@ -77,7 +77,7 @@ export default function Sell() {
             <h2 className="text-2xl text-center font-semibold mb-6">
             Newest listings
             </h2>
-            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {saleListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
