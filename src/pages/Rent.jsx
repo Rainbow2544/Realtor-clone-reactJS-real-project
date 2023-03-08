@@ -71,32 +71,39 @@ export default function Rent() {
     return (
       <div>
           <div className=" max-w-6xl mx-auto mt-6 px-3 ">
-          { rentListings && rentListings.length > 0 && (
-            <div>
-              <h2 className="text-2xl text-center font-semibold mb-6">
-              Newest listings
-              </h2>
-              <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {rentListings.map((listing) => (
-                  <ListingItem
-                    key={listing.id}
-                    id={listing.id}
-                    listing={listing.data}
-                  />
-                ))}
-            </ul>
-          </div>
-          )}
-          {lastFetchedListing && (
-              <div className="flex justify-center items-center">
-                <button
-                  onClick={fetchMoreListings}
-                  className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
-                >
-                  Load more
-                </button>
+          { loading ? (<Spinner />) :
+            rentListings && rentListings.length > 0 ? (
+            <>
+              <div>
+                <h2 className="text-2xl text-center font-semibold mb-6">
+                Newest listings of rent
+                </h2>
+                <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {rentListings.map((listing) => (
+                    <ListingItem
+                      key={listing.id}
+                      id={listing.id}
+                      listing={listing.data}
+                    />
+                  ))}
+                </ul>
               </div>
-            )}
+
+              {lastFetchedListing && (
+                <div className="flex justify-center items-center">
+                  <button
+                    onClick={fetchMoreListings}
+                    className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
+                  >
+                    Load more
+                  </button>
+                </div>
+              )}
+          
+            </>
+          ) :(
+            <p>There are no current houses for rent.</p>
+          )}
           </div>
       </div>
     )
