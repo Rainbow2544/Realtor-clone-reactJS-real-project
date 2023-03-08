@@ -16,6 +16,7 @@ export default function Slider() {
     const [listings, setListings] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    SwiperCore.use([Autoplay, Navigation, Pagination]);
     useEffect(()=>{
       async function fetchListings(){
         const listingsRef = collection(db,"listings");
@@ -49,7 +50,7 @@ export default function Slider() {
             pagination={{ type: "progressbar" }}
             effect="fade"
             modules={[EffectFade]}
-            autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 2000 }}
         >
             {listings.map(({data ,id}) => (
                 <SwiperSlide key={id} onClick={() => navigate(`/category/${data.type}/${id}`)}>
@@ -61,7 +62,7 @@ export default function Slider() {
                     >
                         <p className='absolute max-w-[90%] rounded-br-3xl p-2 font-medium bg-[#54a5d7] opacity-90 text-white left-1 top-3'>
                             {data.name}</p>
-                        <p className='absolute max-w-[90%] rounded-br-3xl p-2 font-medium bg-[#d1af66] opacity-90 text-white left-1 bottom-3'>
+                        <p className='absolute max-w-[90%] rounded-tr-3xl p-2 font-medium bg-[#d1af66] opacity-90 text-white left-1 bottom-3'>
                             ${data.discountPrice? data.discountPrice:data.regularPrice}
                             {data.type ==="rent"&& "/week"}
                         </p>

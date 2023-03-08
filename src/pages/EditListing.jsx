@@ -243,7 +243,7 @@ return (
                     value={name}
                     placeholder="Enter your name"
                     onChange={onChangeHandler}
-                    maxLength="25"
+                    maxLength="60"
                     minLength="4"
                     required
                     className="w-full text-xl rounded"/>
