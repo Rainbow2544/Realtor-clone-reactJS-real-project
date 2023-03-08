@@ -101,10 +101,15 @@ export default function Home() {
       <div className=" max-w-6xl mx-auto mt-6 px-3 ">
         
       { offerListings && offerListings.length > 0 && (
-          <div>
-            <h2 className="text-2xl ml-3 font-semibold mb-6">
+          <div className='mt-10'>
+            <h2 className="text-2xl ml-3 font-semibold mb-2">
             Recent offers
             </h2>
+            <Link to="/offers">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more places for sale
+              </p>
+              </Link>
             <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {offerListings.map((listing) => (
                 <ListingItem

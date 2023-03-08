@@ -13,7 +13,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
-import Category from "./pages/Offers";
+import Offers from "./pages/Offers";
 
 function App() {
   return (
