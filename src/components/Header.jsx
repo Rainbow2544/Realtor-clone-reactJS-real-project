@@ -39,6 +39,7 @@ export default function Header() {
   function Logout() {
     auth.signOut();
     navigate("/");
+    window.location.reload();
   }
 
   function onSearchClick(){

@@ -16,7 +16,7 @@ function SearchBar() {
   return (
 
     <form onSubmit={handleSubmit}>
-        <div className="bg-gray-100 rounded-full px-6 py-3 flex justify-center items-center">
+        <div className="bg-white rounded-full px-6 py-3 flex justify-center items-center">
             <input
                 type="text"
                 value={searchTerm} 
