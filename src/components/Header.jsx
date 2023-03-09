@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {FaSearch} from "react-icons/fa";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [pageState, setPageState] = useState(false);
+  const [search, setSearch] = useState(false);
 
   const auth = getAuth();
   useEffect(()=>{
@@ -36,6 +39,10 @@ export default function Header() {
   function Logout() {
     auth.signOut();
     navigate("/");
+  }
+
+  function onSearchClick(){
+    setSearch((prev)=> !prev);
   }
 
   
@@ -115,7 +122,22 @@ export default function Header() {
                 >
                   Sign up
                 </li>}
+                <li className='mt-1'>
+                  <button 
+                    onClick={onSearchClick}
+                    className='p-3 bg-blue-500 rounded-full'>
+                    <FaSearch/>
+                  </button>
+                  
+                </li>
                 </ul>
+            </div>
+            
+            <div 
+              className={`${
+              search ? 'block' : 'hidden'
+            } absolute top-full left-0 right-0 mt-2`}>
+              <SearchBar />
             </div>
         </header>
         

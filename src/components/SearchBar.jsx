@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function SearchBar({ onSearch }) {
+
+function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleChange(event) {
@@ -9,14 +10,29 @@ function SearchBar({ onSearch }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onSearch(searchTerm);
+    //onSearch(searchTerm);
   }
 
   return (
+
     <form onSubmit={handleSubmit}>
-      <input type="text" value={searchTerm} onChange={handleChange} />
-      <button type="submit">Search</button>
+        <div className="bg-gray-100 rounded-full px-6 py-3 flex justify-center items-center">
+            <input
+                type="text"
+                value={searchTerm} 
+                onChange={handleChange}
+                
+                placeholder="Address, School, City, Zip or Neighborhood"
+                className="bg-transparent outline-none w-[60%] mr-4"
+            />
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+                Search
+            </button>
+        </div>
     </form>
+
+    
+    
   );
 }
 

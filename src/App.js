@@ -16,11 +16,13 @@ import Listing from "./pages/Listing";
 import Offers from "./pages/Offers";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <>
       <Router>
         <Header />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sell" element={<Sell />} />
