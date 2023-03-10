@@ -81,7 +81,7 @@ export default function SearchResults() {
   return (
     <div>
         <h2 className="text-2xl text-center font-semibold my-6">
-                Search result of "{searchTerm}""
+                Search result of "{searchTerm}"
                 </h2>
         {listings && listings.length > 0 ? 
         <div className='mt-5'>
