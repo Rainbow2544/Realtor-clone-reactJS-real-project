@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+
 
 
 function SearchBar() {
+  
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+  
 
   function handleChange(event) {
     setSearchTerm(event.target.value);
@@ -10,9 +15,15 @@ function SearchBar() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    //onSearch(searchTerm);
+    if(searchTerm.length > 0){
+      navigate(`/searchResults/${searchTerm}`);
+      setSearchTerm('');
+    }
+    
+    
+    
   }
-
+  
   return (
 
     <form onSubmit={handleSubmit}>
@@ -25,7 +36,9 @@ function SearchBar() {
                 placeholder="Address, School, City, Zip or Neighborhood"
                 className="bg-transparent outline-none w-[60%] mr-4"
             />
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+            <button 
+              type='submit'
+              className="bg-red-500 hover:bg-red-600 active:bg-red-700  shadow hover:shadow-lg active:shadow-lg font-semibold text-white px-4 py-2 rounded-full duration-200 ease-in-out">
                 Search
             </button>
         </div>

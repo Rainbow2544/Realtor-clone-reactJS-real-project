@@ -126,7 +126,7 @@ export default function Header() {
                 <li className='mt-1'>
                   <button 
                     onClick={onSearchClick}
-                    className='p-3 bg-blue-500 rounded-full'>
+                    className='p-3 text-white bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-full shadow hover:shadow-lg active:shadow-lg duration-200 ease-in-out'>
                     <FaSearch/>
                   </button>
                   

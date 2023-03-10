@@ -15,6 +15,7 @@ import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
 import Offers from "./pages/Offers";
 import Footer from "./components/Footer";
+import SearchResults from "./pages/SearchResults";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/sell" element={<Sell />} />
           <Route path="/rent" element={<Rent />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/searchResults/:searchTerm" element={<SearchResults />} />
           <Route path="/profile" element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile />} />
           </Route>
