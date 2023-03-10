@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This a Realtor clone reactJs app with tailwindcss and firebase. 
+Here is the link of the app: <a href="https://react-js-real-project.vercel.app/">Realtor clone reactJs project</a>
 
 ## Available Scripts
 
