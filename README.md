@@ -1,7 +1,31 @@
-# Realtor clone reactJs app 
+# Realtor clone reactJs website (React.js, Firebase, Tailwind CSS, Swiper, React-leaflet)
 
-This is a Realtor clone reactJs app with tailwindcss and firebase. 
+This is a Realtor clone reactJs website with tailwindcss and firebase. This website showcases my skills in React.js, Tailwind CSS, Firebase and JavaScript, and serves as a portfolio piece.
 <br/>Here is the link of the app: <a href="https://react-js-real-project.vercel.app/">Realtor clone reactJs project</a>
+
+## Features
+<ul>
+  <li>Several pages, including Home, Buy, Rent, Profile, Log in, and Sign up pages</li>
+  <li>Discrete search bar in the header for easy property searches</li>
+  <li>Visually stunning photo gallery section with Swiper library in all the listing pages</li>
+  <li>Prominent display of latest house listings for quick access in the home page</li>
+  <li>Private route to protect Profile page for only registered users to create or update house listings</li>
+  <li>Like feature on all listing boxes (currently for demo only)</li>
+  <li>Detailed listing pages with MapContainer and contact button for easy landlord communication</li>
+</ul>
+
+
+## Installation
+
+To install and run this website on your local machine, you can follow these steps:
+
+1. Clone the repository to your local machine using `git clone https://github.com/Rainbow2544/Realtor-clone-reactJS-real-project.git`
+2. Open the terminate and run `npm install` and `npm start`
+3. Enjoy exploring the website!
+
+<img src="https://drive.google.com/uc?export=view&id=1at8roxnyqoI70Qlh_abyDxq2TuX7r56q" alt="Image2" width="700" height="400"/>
+<img src="https://drive.google.com/uc?export=view&id=1rB3ZExtTMOt2e_9pL6rljY_XOMmQgnB8" alt="Image2" width="700" height="400"/>
+
 
 ## Available Scripts
 
