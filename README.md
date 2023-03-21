@@ -1,7 +1,7 @@
 # Realtor clone reactJs website (React.js, Firebase, Tailwind CSS, Swiper, React-leaflet)
 
 This is a Realtor clone reactJs website with Tailwind CSS and Firebase. This website showcases my skills in React.js, Tailwind CSS, Firebase and JavaScript, and serves as a portfolio piece.
-<br/>Here is the link of the website: <a href="https://react-js-real-project.vercel.app/">Realtor clone reactJs project</a>
+<br/>Here is the live demo of the website: <a href="https://react-js-real-project.vercel.app/">Realtor clone reactJs project</a>
 
 ## Features
 <ul>
