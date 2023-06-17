@@ -2,6 +2,8 @@
 
 This is a Realtor clone reactJs website with Tailwind CSS and Firebase. This website showcases my skills in React.js, Tailwind CSS, Firebase and JavaScript, and serves as a portfolio piece.
 <br/>Here is the live demo of the website: <a href="https://react-js-real-project.vercel.app/">Realtor clone reactJs project</a>
+<img src="https://drive.google.com/uc?export=view&id=1at8roxnyqoI70Qlh_abyDxq2TuX7r56q" alt="Image2" width="700" height="400"/>
+<img src="https://drive.google.com/uc?export=view&id=1rB3ZExtTMOt2e_9pL6rljY_XOMmQgnB8" alt="Image2" width="700" height="400"/>
 
 ## Features
 <ul>
@@ -23,8 +25,7 @@ To install and run this website on your local machine, you can follow these step
 2. Open the terminate and run `npm install` and `npm start`
 3. Enjoy exploring the website!
 
-<img src="https://drive.google.com/uc?export=view&id=1at8roxnyqoI70Qlh_abyDxq2TuX7r56q" alt="Image2" width="700" height="400"/>
-<img src="https://drive.google.com/uc?export=view&id=1rB3ZExtTMOt2e_9pL6rljY_XOMmQgnB8" alt="Image2" width="700" height="400"/>
+
 
 
 ## Available Scripts
